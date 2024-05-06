@@ -53,7 +53,7 @@ export class TesController {
 
   @Get('home')
   home(@Req() req, @Res() res) {
-    res.render('home', { message: 'haloooaasad' });
+    res.render('home', { message: 'haloooaasasdasdadsad' });
   }
 
   @Get('detail/:id')
