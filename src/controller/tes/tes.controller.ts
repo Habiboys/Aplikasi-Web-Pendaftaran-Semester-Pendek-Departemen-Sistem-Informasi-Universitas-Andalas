@@ -12,18 +12,13 @@ import {
   Res,
 } from '@nestjs/common';
 
-
 import { UpdateHeroDto } from './dto/Update-hero.dto';
 import { CreateHeroDto } from './dto/Create-hero.dto';
 import { TesService } from './tes.service';
 
-
-
 @Controller('tes')
 export class TesController {
   constructor(private tesService: TesService) {}
-
-
 
   @Get('hero')
   @HttpCode(200)
@@ -46,9 +41,8 @@ export class TesController {
     @Body() createhero: CreateHeroDto,
     @Res({ passthrough: true }) res,
   ) {
-   this.tesService.create(createhero);
+    this.tesService.create(createhero);
     return this.tesService.findAll();
-  
   }
 
   @Post('add')
@@ -59,7 +53,7 @@ export class TesController {
 
   @Get('home')
   home(@Req() req, @Res() res) {
-    res.render('home', { message: 'halooo' });
+    res.render('home', { message: 'haloooaasad' });
   }
 
   @Get('detail/:id')
