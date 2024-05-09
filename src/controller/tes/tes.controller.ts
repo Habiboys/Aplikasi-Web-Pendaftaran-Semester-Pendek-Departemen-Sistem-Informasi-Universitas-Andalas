@@ -10,19 +10,32 @@ import {
   Render,
   Req,
   Res,
+  SetMetadata,
+  UseGuards,
 } from '@nestjs/common';
 
 import { UpdateHeroDto } from './dto/Update-hero.dto';
 import { CreateHeroDto } from './dto/Create-hero.dto';
 import { TesService } from './tes.service';
 
+import { Roles } from '../auth/roles.decorator';
+import { RolesGuard } from '../auth/roles.guard';
+import { AuthGuard } from '../auth/auth.guard';
+import { Role } from '../auth/role.enum';
+
+
+
 @Controller('tes')
 export class TesController {
   constructor(private tesService: TesService) {}
 
   @Get('hero')
+// @SetMetadata('roles', [Role.ADMIN])
+// @Roles(Role.ADMIN)
+@UseGuards(AuthGuard)
   @HttpCode(200)
   index(@Res() res) {
+    res.render('dashboard');
     res.json(this.tesService.findAll());
   }
 
